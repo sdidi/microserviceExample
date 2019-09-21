@@ -16,8 +16,11 @@ public class Receiver {
             channel.queueDeclare("my", false, false, false, null);
             DeliverCallback deliverCallback = (tag,message) -> {               
                String msg = new String(message.getBody(),"UTF-8");
-               System.out.println(" Received message : ' "+ msg+" !'");
-            };
+               String [] partsOfMessage = msg.split(",");
+               if (partsOfMessage.length > 1){
+                   System.out.println("Hello"+ partsOfMessage[1]+", I am your father!"); 
+               }
+              };
         channel.basicConsume("my", true, deliverCallback, tag -> { });
     
     }

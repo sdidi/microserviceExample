@@ -17,7 +17,7 @@ public class Sender {
         try {
             Connection connection = factory.newConnection();
             Channel channel = connection.createChannel();
-            String message = "Hello "+name;
+            String message = "Hello my name is, "+name;
             channel.queueDeclare("my", false, false, false, null);
            
             channel.basicPublish("","my", null,message.getBytes());            
